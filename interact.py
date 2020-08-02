@@ -209,7 +209,7 @@ def run():
     GPT2Tokenizer, GPT2LMHeadModel) if args.model == 'gpt2' else (
     OpenAIGPTTokenizer, OpenAIGPTLMHeadModel)
     tokenizer = tokenizer_class.from_pretrained(args.model_checkpoint)
-    model = model_class.from_pretrained(args.model_checkpoint)
+    model = model_class.from_pretrained(args.model_checkpoint, from_tf=True)
     model.to(args.device)
     add_special_tokens_(model, tokenizer)
 
